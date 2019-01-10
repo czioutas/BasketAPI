@@ -1,12 +1,35 @@
-# unpacked plugin folders
-plugins/**/*
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+nupkg/
 
-# files directory where uploads go
-files
+# Visual Studio Code
+.vscode
 
-# DBMigrate plugin: generated SQL
-db/sql
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# AssetBundler plugin: generated bundles
-javascripts/bundles
-stylesheets/bundles
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Visual Studio 2015
+.vs/
+
+Logs/
