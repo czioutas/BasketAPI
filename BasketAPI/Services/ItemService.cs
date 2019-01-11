@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using BasketAPI.Models;
 using BasketAPI.Repositories.Contracts;
@@ -14,6 +13,7 @@ namespace BasketAPI.Services
         {
             _itemRepository = itemRepository;
         }
+
         public async Task<ItemModel> GetItemAsync(int id)
         {
             return await _itemRepository.GetItem(id);

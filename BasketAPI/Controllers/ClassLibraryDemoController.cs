@@ -11,27 +11,12 @@ namespace BasketAPI.Controllers
         [HttpGet]
         public async Task<ActionResult> AddItemAsync()
         {
-            BasketAPILibrary.IBasketAPI a = BasketAPILibrary.Basket.BasketAPIClient();
+            BasketAPILibrary.IBasketAPI a = BasketAPILibrary.Basket.BasketAPIClient(o => {
+                o.Url = "http://127.0.0.1:9005/api/v1/basket/";
+            });
+
             await a.ChangeItemAsync(1, 1);
             return Ok(1);
-        }
-
-        // GET api/ClassLibraryDemo/RemoveItem
-        [HttpGet]
-        public async Task<ActionResult> RemoveItem()
-        {
-            BasketAPILibrary.IBasketAPI a = BasketAPILibrary.Basket.BasketAPIClient();
-            await a.ChangeItemAsync(1, -1);
-            return Ok(1);
-        }
-
-        // GET api/ClassLibraryDemo/Clear
-        [HttpGet]
-        public async Task<ActionResult> Clear()
-        {
-            BasketAPILibrary.IBasketAPI a = BasketAPILibrary.Basket.BasketAPIClient();
-            await a.ClearCartAsync();
-            return Ok(1);
-        }
+        }        
     }
 }

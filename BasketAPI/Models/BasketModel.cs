@@ -15,7 +15,7 @@ namespace BasketAPI.Models
 
         public void UpdateItem(ItemModel item, int quantity)
         {
-            BasketItemModel _basketItem = this.Items.Where(bi => bi.Id == item.Id).FirstOrDefault();
+            BasketItemModel _basketItem = this.Items.Where(bi => bi.ItemId == item.Id).FirstOrDefault();
 
             if (_basketItem == null) {
                 _basketItem = new BasketItemModel {
@@ -24,6 +24,7 @@ namespace BasketAPI.Models
                     PricePerUnit = item.PricePerUnit,
                     Quantity = quantity
                 };
+                Items.Add(_basketItem);
             } else {
                 _basketItem.Quantity += quantity;
             }
@@ -31,9 +32,7 @@ namespace BasketAPI.Models
             TotalCost += _basketItem.PricePerUnit * quantity;
             if (TotalCost < 0) { TotalCost = 0; }
 
-            if (_basketItem.Quantity > 0) {
-                Items.Add(_basketItem);
-            } else {
+            if (_basketItem.Quantity < 1) {              
                 Items.Remove(_basketItem);
             }
         }
@@ -42,6 +41,11 @@ namespace BasketAPI.Models
         {
             this.Items = null;
             this.TotalCost = 0;
+        }
+
+        public void CalculateTotalCost()
+        {
+            this.TotalCost = this.Items.Sum(i => i.PricePerUnit * i.Quantity);
         }
     }
 }

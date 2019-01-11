@@ -1,15 +1,20 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BasketAPILibrary
 {
     internal class BasketAPI : IBasketAPI
     {
-        private readonly Uri baseUri = new Uri("http://127.0.0.1:9005/api/basket/");
+        public BasketAPI(BasketOptions configure)
+        {
+            Url = configure.Url;
+            baseUri = new Uri(Url);
+        }
+
+        private Uri baseUri;
+        private string Url;
 
         public async Task<bool> ChangeItemAsync(int itemId, int quantity)
         {

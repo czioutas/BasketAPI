@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using BasketAPI.Models;
 using BasketAPI.Repositories.Contracts;
@@ -15,18 +14,22 @@ namespace BasketAPI.Services
             _basketRepository = basketRepository;
         }
 
-        public async Task UpdateBasketItemAsync(ItemModel item, int quantity)
+        public async Task<BasketModel> UpdateBasketItemAsync(ItemModel item, int quantity)
         {
             BasketModel _basket = await GetBasketAsync();
             _basket.UpdateItem(item, quantity);
             await _basketRepository.UpdateBasketAsync(_basket);
+
+            return _basket;
         }
 
-        public async Task ClearBasketAsync()
+        public async Task<BasketModel> ClearBasketAsync()
         {
             BasketModel _basket = await GetBasketAsync();
             _basket.ClearItems();
             await _basketRepository.UpdateBasketAsync(_basket);
+
+            return _basket;
         }
 
         public async Task<BasketModel> GetBasketAsync() {

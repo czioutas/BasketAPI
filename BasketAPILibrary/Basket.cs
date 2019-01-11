@@ -1,11 +1,17 @@
 ﻿
+using System;
+
 namespace BasketAPILibrary
 {
     public static class Basket
     {
-        public static IBasketAPI BasketAPIClient()
+        public static IBasketAPI BasketAPIClient(Action<BasketOptions> configuration)
         {
-            return new BasketAPI();
+            if (configuration == null) throw new ArgumentNullException("Missing Configuration");
+            BasketOptions settings = new BasketOptions();
+            configuration(settings);
+
+            return new BasketAPI(settings);
         }
     }
 }

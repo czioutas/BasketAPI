@@ -1,15 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using BasketAPI.Models;
-using BasketAPI.Services;
 using BasketAPI.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BasketAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class BasketController : ControllerBase
     {
