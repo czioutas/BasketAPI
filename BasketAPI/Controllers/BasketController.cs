@@ -18,8 +18,10 @@ namespace BasketAPI.Controllers
             _itemService = itemService;
         }
 
-        // returns whole basket
-        // GET api/basket
+        /// <summary>
+        /// Retrieve the whole basket
+        /// </summary>
+        /// <returns>An array of items</returns>
         [HttpGet]
         public async Task<ActionResult> Get()
         {

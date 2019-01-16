@@ -16,6 +16,7 @@ using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Reflection;
 
 namespace BasketAPI
 {
@@ -84,6 +85,10 @@ namespace BasketAPI
                             Version = "v1"
                         }
                     );
+
+                    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.XML";
+                    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                    options.IncludeXmlComments(xmlPath);
                 });
             }
         }

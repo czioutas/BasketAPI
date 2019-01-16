@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BasketAPI</name>
+    </assembly>
+    <members>
+        <member name="M:BasketAPI.Controllers.BasketController.Get">
+            <summary>
+            Retrieve the whole basket
+            </summary>
+            <returns>An array of items</returns>
+        </member>
+    </members>
+</doc>
